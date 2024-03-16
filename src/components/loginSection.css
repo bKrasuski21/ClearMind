@@ -1,0 +1,100 @@
+/* Apply styles directly to the body tag for the full-page background */
+html, body {
+    margin: 0;
+    padding: 0;
+
+  }  
+
+  .title {
+    flex-grow: 1;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    height: 200vh; /* Use 100vh to cover the full viewport height */
+
+    color: white;
+    cursor: pointer;
+}/* index.css */
+
+/* Remove the loginHTML class, it's not necessary */
+/* Top-level container for the login page */
+.loginContainer {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+
+    flex-direction: column; /* Stack children vertically */
+    justify-content: flex-start; /* Align children to the start of the container */
+    align-items: center;
+    height: 100vh; /* Use 100vh to cover the full viewport height */
+    background: linear-gradient(-45deg, #e26a45, #c0386c, #d3a015, #bd8e0f);
+    background-size: 400% 400%;
+    animation: backgroundSlide 15s ease infinite;
+    border: none;
+}
+
+/* Rest of your styles... */
+
+
+.loginInput {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.loginInput:hover {
+    background: rgb(241, 241, 241);
+}
+.buttonTopContainer {
+    width: 600px; /* Adjust the width as needed */
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    top: 25%; /* This positions the container at 1/4th from the top */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the container horizontally and moves it up by half its height */
+}
+
+.loginButton {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #dfcd30;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.loginButtonGoogle {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #5630df;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+.loginButton:hover {
+    background-color: #8d850f;
+}
+.loginButtonGoogle:hover {
+    background-color: #3f1f8d;
+}
+
+@keyframes backgroundSlide {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}

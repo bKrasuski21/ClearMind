@@ -1,0 +1,156 @@
+.top {
+    display: flex;
+    position: relative; /* Needed for absolute positioning of children */
+     align-items: center;
+    padding: 10px;
+    justify-content: center;
+    min-height: 75px; /* Minimum height to prevent clipping */
+
+
+  }
+  
+  .center-title {
+    position: absolute; /* Centered regardless of other content */
+    width: 100%; /* Full width to center content */
+    text-align: center;
+    font-size: 43px;
+    left: 0; /* Align with the left edge */
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between elements */
+    position: absolute; /* Positioned absolutely to the right */
+    right: 10px; /* Adjust spacing from the right edge */
+    top: 50%;
+    transform: translateY(-50%); /* Align center vertically */
+  }
+  
+  .user-photo {
+    width: 50px; /* Example size, adjust as needed */
+    height: 50px; /* Example size, adjust as needed */
+    border-radius: 50%; /* Makes the image round */
+  }
+  
+
+.btn-custom {
+    background-color: rgb(14, 116, 205);
+   
+}
+.button-normal-mode{
+   background-color: rgb(14, 116, 205);
+
+}
+.button-remove-mode{
+  background-color: rgb(205, 14, 74);
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .weekdays-header {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+
+    grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0; /* Adjust vertical padding as needed */
+  }
+  .container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    height: 7vh; /* Example height */
+  }
+  .day-cell.header {
+    justify-content: center;
+    text-align: center; /* This will ensure the text is centered if the content is not flex */
+    background-color: #ffffff;
+
+  }
+  
+  .day-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .day-cell.not-in-month {
+    background-color: #f0f0f0;
+  }
+  
+  .day-cell.today {
+    border: 2px solid #409da7;
+  }
+  
+  .day-cell.selected {
+    background-color: rgb(255, 0, 0);
+    color: white;
+  }
+  
+  .note {
+    position: relative;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    color: rgb(5, 0, 0);
+    font-size: smaller;
+    text-align: center;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .month-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 27px;
+
+  }
+  .important {
+    flex-grow: 1;
+    font-size: 19px;
+
+  }
+  .chronic {
+    flex-grow: 1;
+    font-size: 19px;
+    color: rgb(171, 8, 8);
+
+  }
+  
+  .navigation-button {
+    cursor: pointer;
+  }
+  
+  .weekdays-header {
+    /* Adjust the padding to control the space between the header and grid */
+    padding: 0 0 10px;
+  }
+  
+  /* Add some space between buttons */
+  .container button:not(:last-child) {
+    margin-right: 10px;
+  }
+  
+  /* Update .grid-container to have more space around the grid */
+  .grid-container {
+    padding: 20px; /* Increase padding */
+  }
