@@ -1,0 +1,27 @@
+.App {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+
+    flex-direction: column; /* Stack children vertically */
+    justify-content: flex-start; /* Align children to the start of the container */
+    align-items: center;
+    height: 100vh; /* Use 100vh to cover the full viewport height */
+    background-size: 400% 400%;
+    animation: backgroundSlide 15s ease infinite;
+    border: none;
+}
+.form-container {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+
+    flex-direction: column; /* Stack children vertically */
+    justify-content: flex-start; /* Align children to the start of the container */
+    align-items: center;
+    height: 100vh; /* Use 100vh to cover the full viewport height */
+    background: linear-gradient(-45deg, #e26a45, #c0386c, #d3a015, #bd8e0f);
+    background-size: 400% 400%;
+    animation: backgroundSlide 15s ease infinite;
+    border: none;
+}

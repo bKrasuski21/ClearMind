@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 //import { InputGroup } from 'react-bootstrap';
 import './loginSection.css';
+import  TriggerTrackerForm  from './TriggerTracker.js'
 
 
 export const LogOffApp = () => {
@@ -35,8 +36,6 @@ export const Auth = () => {
         <>  
           <div className = "loginContainer">   
             {user ? <LogOff /> : <SignIn />}
-           
- 
              </div>
         </>
                         

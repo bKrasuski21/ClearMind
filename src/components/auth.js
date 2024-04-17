@@ -2,6 +2,7 @@ import { auth, googleProvider } from '../config/firebase';
 import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { useState } from "react";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import  TriggerTrackerForm  from './TriggerTracker.js'
 import Button from 'react-bootstrap/Button';
 
 

@@ -9,6 +9,7 @@ import { Menu, Transition } from '@headlessui/react'
 import { DotsVerticalIcon } from '@heroicons/react/outline'
 import { Fragment } from 'react'
 
+
 import Button from 'react-bootstrap/Button';
 //import "bootstrap/dist/css/bootstrap.min.css";
 import {
@@ -36,7 +37,7 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 import { DateTimeDisplay } from '../components/dateDisplay';
 import './index.css';
-
+import TriggerTrackerForm from '../components/TriggerTracker';
 
     
 export const CafApp = () => {
@@ -59,6 +60,8 @@ export const CafApp = () => {
  
   const [migraineDays, setMigraineDays] = useState({});
   const navigate = useNavigate();
+  const [showDetailForm, setShowDetailForm] = useState(false);
+  //setShowDetailForm(false);
 
   const [currentMonth, setCurrentMonth] = useState(new Date());
   useEffect(() => {
@@ -163,7 +166,7 @@ export const CafApp = () => {
         }
     }else {
       if(!isRemovingMode){
-    const note = hasMigraine ? prompt('Edit your migraine note:', notes[formattedDate] || '') : prompt('Migraine Severity 1-10:', '');
+    const note = hasMigraine ? prompt('Edit your migraine note:', notes[formattedDate] || '') : prompt('Migraine Severity 0-10:', '');
     const hasNote = note !== null && note.trim() !== '';
       if (hasNote) {
         // Update local states
@@ -171,7 +174,8 @@ export const CafApp = () => {
         const newNotes = { ...notes, [formattedDate]: note.trim() };
         setMigraineDays(newMigraineDays);
         setNotes(newNotes);
-  
+        setShowDetailForm(true);
+
         // Update Firestore
         const calendarDataRef = doc(dataBase, 'MigraineData', user.uid);
         await updateDoc(calendarDataRef, {
@@ -185,7 +189,8 @@ export const CafApp = () => {
         delete newNotes[formattedDate];
         setMigraineDays(newMigraineDays);
         setNotes(newNotes);
-  
+        setShowDetailForm(true);
+
         const calendarDataRef = doc(dataBase, 'MigraineData', user.uid);
         await updateDoc(calendarDataRef, {
           Days: newMigraineDays,
@@ -266,6 +271,13 @@ export const CafApp = () => {
     const color = green.map((c, i) => c + Math.round((red[i] - c) * 2*value));
     return `rgb(${color.join(',')})`;
   };
+  const calculateMigraineColor = (value) => {
+    //const green = [0, 128, 0]; // RGB for green
+    //const color = [255, 255 , 255]
+    //const color = [25 * value, 255 , 255]
+    const color = [200, Math.max(0, 255 - 30 * value), Math.max(0, 255 - 30 * value)];
+    return `rgb(${color.join(',')})`;
+  };
   
   return (
     <>     
@@ -290,23 +302,34 @@ export const CafApp = () => {
           <div key={index} className="day-cell header">{dayName}</div>
         ))}
       </div>
-      <div className="grid-container">
+      <div className="grid-container" >
         {days.map((day, index) => {
           const formattedDate = format(day, 'yyyy-MM-dd');
           const isCurrentDay = isToday(day);
+          const noteValue = parseInt(notes[formattedDate], 10); // Assuming notes are stored as "Migraine Severity 1-10"
+          const dayColor = noteValue ? calculateMigraineColor(noteValue) : 'transparent'; // Default to transparent if no note
           return (
+            <>
             <div
               key={index}
-              className={`day-cell ${isSameMonth(day, startDay) ? '' : 'not-in-month'} 
-                ${notes[formattedDate] ? 'selected' : ''}
-                ${isCurrentDay ? 'today' : ''}`}
+              className={`day-cell ${isSameMonth(day, startDay) ? '' : 'not-in-month'} ${notes[formattedDate] ? 'selected' : ''}`}
               onClick={() => handleDayClick(day)}
+              style={{
+                backgroundColor: `white`,
+                backgroundColor: notes[formattedDate] ? dayColor : '',
+                //border: notes[formattedDate] ? '1px solid black' : ''
+              }}
             >
               {format(day, 'd')}
               {notes[formattedDate] && <div className="note">{notes[formattedDate]}</div>}
             </div>
+           
+          
+            {showDetailForm ? navigate('/form', { state: { date: formattedDate} }) : navigate('/app')}
+            </>
           );
         })}
+        
       </div>
     </div>
     <div className='container'>
