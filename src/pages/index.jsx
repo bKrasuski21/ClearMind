@@ -30,7 +30,7 @@ import { clear } from '@testing-library/user-event/dist/clear';
 //import { Auth } from '../components/auth';
 import {LogOffApp} from '../components/auth';
 import { dataBase } from '../config/firebase'; // data from fire base 
-import { getDocs } from 'firebase/firestore';
+import { getDocs, deleteDoc } from 'firebase/firestore';
 import { doc, getDoc, collection, addDoc, updateDoc, setDoc } from 'firebase/firestore';
 import 'firebase/auth'; 
 import {useAuthState} from 'react-firebase-hooks/auth';
@@ -53,7 +53,6 @@ export const CafApp = () => {
   }
   }
   const [user, loading, error] = useAuthState(auth); // Get the authenticated user
-  console.log('open!!ed!');
 
   const migraineDataRef = collection(dataBase, "MigraineData"); // passed in database and the collection we are trying to access. caffeineDatabaseRef -> reference to our UserData collection
   const [databaseData, setdatabaseData] = useState([]);
@@ -113,7 +112,6 @@ export const CafApp = () => {
 
 
   const handleDayClick = async (day) => {
-    
     const formattedDate = format(day, 'yyyy-MM-dd');
     const hasMigraine = migraineDays[formattedDate];
     if (!user) {
@@ -126,7 +124,7 @@ export const CafApp = () => {
             const newNotes = { ...notes, [formattedDate]: note.trim() };
             setMigraineDays(newMigraineDays);
             setNotes(newNotes);
-      
+
             // Update Firestore
             const calendarDataRef = doc(dataBase, 'MigraineData', 'CalendarData');
             await updateDoc(calendarDataRef, {
@@ -140,13 +138,14 @@ export const CafApp = () => {
             delete newNotes[formattedDate];
             setMigraineDays(newMigraineDays);
             setNotes(newNotes);
-      
+
             const calendarDataRef = doc(dataBase, 'MigraineData', 'CalendarData');
             await updateDoc(calendarDataRef, {
               Days: newMigraineDays,
               Notes: newNotes
             });
           }
+          
         }
         if (isRemovingMode) {
           const newMigraineDays = { ...migraineDays };
@@ -174,8 +173,7 @@ export const CafApp = () => {
         const newNotes = { ...notes, [formattedDate]: note.trim() };
         setMigraineDays(newMigraineDays);
         setNotes(newNotes);
-        setShowDetailForm(true);
-
+      
         // Update Firestore
         const calendarDataRef = doc(dataBase, 'MigraineData', user.uid);
         await updateDoc(calendarDataRef, {
@@ -189,7 +187,6 @@ export const CafApp = () => {
         delete newNotes[formattedDate];
         setMigraineDays(newMigraineDays);
         setNotes(newNotes);
-        setShowDetailForm(true);
 
         const calendarDataRef = doc(dataBase, 'MigraineData', user.uid);
         await updateDoc(calendarDataRef, {
@@ -197,6 +194,9 @@ export const CafApp = () => {
           Notes: newNotes
         });
       }
+      console.log("WHAT IS GOING ON")
+      //setShowDetailForm(true)
+      navigate('/form', { state: { date: formattedDate} })    
     }
     if (isRemovingMode) {
       const newMigraineDays = { ...migraineDays };
@@ -206,13 +206,21 @@ export const CafApp = () => {
   
       setMigraineDays(newMigraineDays);
       setNotes(newNotes);
-  
+
       // Update Firestore
       const calendarDataRef = doc(dataBase, 'MigraineData', user.uid);
       await updateDoc(calendarDataRef, {
         Days: newMigraineDays,
         Notes: newNotes
       });
+      const docTemp = doc(dataBase, 'triggers', user.uid, 'userTriggers', formattedDate)
+        try {
+          await deleteDoc(docTemp);
+          console.log("Document successfully deleted!");
+        } catch (error) {
+          console.error("Error removing document: ", error);
+        }
+      
     }
     }
     
@@ -325,7 +333,6 @@ export const CafApp = () => {
             </div>
            
           
-            {showDetailForm ? navigate('/form', { state: { date: formattedDate} }) : navigate('/app')}
             </>
           );
         })}

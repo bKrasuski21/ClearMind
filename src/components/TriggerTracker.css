@@ -6,8 +6,18 @@
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for better visibility */
 }
+.Header {
+    width: 100%; /* Full width to center content */
+    text-align: center;
+    font-size: 23px;
+    margin: auto;
+
+    left: 0; /* Align with the left edge */
+
+}
 
 .form-row {
+
     margin-bottom: 10px;
 }
 
