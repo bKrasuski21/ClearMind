@@ -1,56 +1,7 @@
-.top {
-    display: flex;
-    position: relative; /* Needed for absolute positioning of children */
-     align-items: center;
-    padding: 10px;
-    justify-content: center;
-    min-height: 75px; /* Minimum height to prevent clipping */
 
 
-  }
-  .loginContainer {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
 
-    flex-direction: column; /* Stack children vertically */
-    justify-content: flex-start; /* Align children to the start of the container */
-    align-items: center;
-    height: 100vh; /* Use 100vh to cover the full viewport height */
-    background: linear-gradient(-45deg, #e26a45, #c0386c, #d3a015, #bd8e0f);
-    background-size: 400% 400%;
-    animation: backgroundSlide 15s ease infinite;
-    border: none;
-}
-  .center-title {
-    position: absolute; /* Centered regardless of other content */
-    width: 100%; /* Full width to center content */
-    text-align: center;
-    font-size: 43px;
-    left: 0; /* Align with the left edge */
-  }
-  
-  .user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Space between elements */
-    position: absolute; /* Positioned absolutely to the right */
-    right: 10px; /* Adjust spacing from the right edge */
-    top: 50%;
-    transform: translateY(-50%); /* Align center vertically */
-  }
-  
-  .user-photo {
-    width: 50px; /* Example size, adjust as needed */
-    height: 50px; /* Example size, adjust as needed */
-    border-radius: 50%; /* Makes the image round */
-  }
-  
 
-.btn-custom {
-    background-color: rgb(14, 116, 205);
-   
-}
 .button-normal-mode{
    background-color: rgb(14, 116, 205);
 

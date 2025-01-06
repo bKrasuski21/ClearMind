@@ -79,7 +79,7 @@ export function Navbar() {
             <nav className='navbar'>
                 <div className='navbar-container'>
                     <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-                        <img src='images/gclogo.png' alt='company logo' className='navbar-logo-img' />
+                        <img src='images/logo.png' alt='company logo' className='navbar-logo-img' />
                         ClearMind
                         <i className='fab fa-typo3' />
                     </Link>
@@ -88,7 +88,7 @@ export function Navbar() {
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/app' className='nav-links' onClick={closeMobileMenu}>
                                 Home
                             </Link>
                         </li>
@@ -97,11 +97,12 @@ export function Navbar() {
                                 Data
                             </Link>
                         </li>
-                        <li>
-                            <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
-                                Sign Up
+                        <li className='nav-item'>
+                            <Link to='/migraines' className='nav-links' onClick={closeMobileMenu}>
+                                Migraines
                             </Link>
                         </li>
+                       
                         
                     </ul>
                     {user ? ( 

@@ -1,27 +1,45 @@
-.App {
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-
-    flex-direction: column; /* Stack children vertically */
-    justify-content: flex-start; /* Align children to the start of the container */
+    font-family: 'PT Sans', sans-serif;
+  }
+  
+  .home,
+  .services,
+  .products,
+  .sign-up {
+    display: flex;
+    height: 90vh;
     align-items: center;
-    height: 100vh; /* Use 100vh to cover the full viewport height */
-    background-size: 400% 400%;
-    animation: backgroundSlide 15s ease infinite;
-    border: none;
-}
-.form-container {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-
-    flex-direction: column; /* Stack children vertically */
-    justify-content: flex-start; /* Align children to the start of the container */
-    align-items: center;
-    height: 100vh; /* Use 100vh to cover the full viewport height */
-    background: linear-gradient(-45deg, #e26a45, #c0386c, #d3a015, #bd8e0f);
-    background-size: 400% 400%;
-    animation: backgroundSlide 15s ease infinite;
-    border: none;
-}
+    justify-content: center;
+    font-size: 3rem;
+  }
+  
+  .services {
+    background-image: ;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 100px;
+  }
+  
+  .products {
+    background-image: ;
+    background-position: center;
+    background-size: fill;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 100px;
+  }
+  
+  .sign-up {
+    background-image: ;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 100px;
+  }
+  

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { format, startOfToday, add, endOfMonth, startOfMonth, eachDayOfInterval, isSameMonth, isToday, getDay, getDaysInMonth, getDaysInYear, isLeapYear } from 'date-fns';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
-import './index.css'; // Make sure to import your stylesheet
 import { auth, googleProvider,  } from '../config/firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
@@ -264,13 +263,7 @@ export const ClearMind = () => {
     <>     
     <div>
     <div className="top">
-  <div className="center-title">ClearMind</div>
-    {user && (
-    <div className="user-info">
-      <span>{user.displayName}</span>
-      <img src={user.photoURL} alt={user.displayName} className="user-photo" />
-    </div>
-    )}
+    
   </div>
  
       <div className="header">
@@ -313,7 +306,7 @@ export const ClearMind = () => {
       </div>
     </div>
     <div className='container'>
-  <button className="btn-custom" onClick={HandleLogOff}>Log Out</button>
+ 
   <button
     onClick={() => setIsRemovingMode(!isRemovingMode)}
     className={isRemovingMode ? 'button-remove-mode' : 'button-normal-mode'}
@@ -321,15 +314,7 @@ export const ClearMind = () => {
     {isRemovingMode ? "Disable Removing Mode" : "Remove Migraine"}
   </button>
 </div>
-<div>
-  <p className='important' style={{ color: calculateColor(yearlyAverage) }}>
-    Average Migraines for {format(currentMonth, 'yyyy')}: {yearlyAverage ? yearlyAverage.toFixed(2) * 100 : 0}%
-  </p>
-  <p className='important' style={{ color: calculateColor(monthlyAverage) }}>
-    Average Migraines for {format(currentMonth, 'MMMM')}: {monthlyAverage ? monthlyAverage.toFixed(2) * 100: 0}%
-  </p>
-  <p className='chronic'>{chronicMigraines ? "Chronic Migraines identified" : "Episodic Migraines identified"}</p>
-</div>
+
     </>
   );
 }; 
