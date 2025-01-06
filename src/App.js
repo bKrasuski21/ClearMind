@@ -1,27 +1,32 @@
-import React, { useState, useEffect } from 'react'; // Import useState
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   BrowserRouter as Router, Route, Routes
 } from "react-router-dom";
-import { Auth } from './components/auth.jsx';
 import 'firebase/auth'; 
-import {CafApp, EventCalendar} from "./pages/index.jsx";
+import {ClearMind} from "./pages/index.jsx";
+import {Login} from "./pages/login.js";
+import {SignUp} from "./pages/SignUp.js";
 import TriggerTrackerForm from './components/TriggerTracker.js';
+import { Navbar } from './pages/Navbar.js';
 
 
 
 function App() {
   return (
-    <div className="App">
+    
       <Router>
-        <Routes>
-          <Route path="/" exact element={<Auth/>}/>
+        <Navbar/>
+        <div className = "page-container"> {}
+          <Routes>
           <Route className = "form-container" path ="/form" exact element = {<TriggerTrackerForm/>}/>
-          <Route path="/app" element={<CafApp/>}/>
+          <Route path="/" element={<ClearMind/>}/>
+          <Route path="/login" element = {<Login/>}/>
+          <Route path ="/Sign-up" element = {<SignUp/>}/>
         </Routes>
+        </div>
       </Router>
-    </div>
+    
   )
 }
 

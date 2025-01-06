@@ -13,7 +13,7 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 import './index.css';
 
     
-export const CafApp = () => {
+export const ClearMind = () => {
   const [chronicMigraines, setChronicMigraines] = useState(false);
 
   const [isRemovingMode, setIsRemovingMode] = useState(false);
