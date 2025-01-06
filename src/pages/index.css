@@ -1,6 +1,8 @@
 
 
+.calendar{
 
+}
 
 .button-normal-mode{
    background-color: rgb(14, 116, 205);
@@ -21,6 +23,7 @@
     position: relative;
   }
   .weekdays-header {
+
     display: grid;
     justify-content: space-between;
     align-items: center;
@@ -31,6 +34,7 @@
     padding: 10px 0; /* Adjust vertical padding as needed */
   }
   .container {
+
     display: flex;
     justify-content: center; /* Center horizontally */
     height: 7vh; /* Example height */
@@ -38,11 +42,11 @@
   .day-cell.header {
     justify-content: center;
     text-align: center; /* This will ensure the text is centered if the content is not flex */
-    background-color: #ffffff;
 
   }
   
   .day-cell {
+
     display: flex;
     justify-content: center;
     align-items: center;
