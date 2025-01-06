@@ -5,39 +5,12 @@ import './index.css'; // Make sure to import your stylesheet
 import { auth, googleProvider,  } from '../config/firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { Menu, Transition } from '@headlessui/react'
-import { DotsVerticalIcon } from '@heroicons/react/outline'
-import { Fragment } from 'react'
-
-
-import Button from 'react-bootstrap/Button';
-//import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  Area,
-} from "recharts";
-import {
-  BrowserRouter as Router, Route, Routes
-} from "react-router-dom";
-
-import { clear } from '@testing-library/user-event/dist/clear';
-//import { Auth } from '../components/auth';
-import {LogOffApp} from '../components/auth';
 import { dataBase } from '../config/firebase'; // data from fire base 
-import { getDocs, deleteDoc } from 'firebase/firestore';
+import { deleteDoc } from 'firebase/firestore';
 import { doc, getDoc, collection, addDoc, updateDoc, setDoc } from 'firebase/firestore';
 import 'firebase/auth'; 
 import {useAuthState} from 'react-firebase-hooks/auth';
-import {useCollectionData} from 'react-firebase-hooks/firestore';
-import { DateTimeDisplay } from '../components/dateDisplay';
 import './index.css';
-import TriggerTrackerForm from '../components/TriggerTracker';
 
     
 export const CafApp = () => {
